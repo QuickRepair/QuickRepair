@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">QuickRepair</string>
+    <string name="login_title">一键登陆</string>
+    <string name="login_button">登陆</string>
+    <string name="login_type_switch_customer">顾客账号登陆</string>
+    <string name="login_type_switch_merchant">商家账号登陆</string>
+    <string name="input_password">输入验证码</string>
+    <string name="input_phone">输入手机号</string>
+    <string name="get_verification">获取验证码</string>
+    <string name="notValidPhoneNumber">不是有效的手机号</string>
+    <string name="notValidInput">手机号或验证码无效</string>
+</resources>

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">QuickRepair</string>
+    <string name="login_title">Login Now</string>
+    <string name="login_button">Login</string>
+    <string name="login_type_switch_customer">Customer login</string>
+    <string name="login_type_switch_merchant">Merchant login</string>
+    <string name="input_phone">Input your phone number</string>
+    <string name="input_password">Input the Verification</string>
+    <string name="get_verification">Get Verification</string>
+    <string name="notValidPhoneNumber">Not valid phone number</string>
+    <string name="notValidInput">Phone number or Verification not valid</string>
+</resources>
