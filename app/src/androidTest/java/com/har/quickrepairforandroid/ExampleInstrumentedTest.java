@@ -1,4 +1,4 @@
-package com.har.quickreporforcustomer;
+package com.har.quickrepairforandroid;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
 		// Context of the app under test.
 		Context appContext = InstrumentationRegistry.getTargetContext();
 
-		assertEquals("com.har.quickreporforcustomer", appContext.getPackageName());
+		assertEquals("com.har.quickrepairforandroid", appContext.getPackageName());
 	}
 }

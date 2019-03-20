@@ -1,4 +1,4 @@
-package com.har.quickreporforcustomer;
+package com.har.quickrepairforandroid;
 
 import org.junit.Test;
 

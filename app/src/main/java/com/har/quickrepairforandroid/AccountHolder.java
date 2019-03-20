@@ -1,10 +1,11 @@
-package com.har.quickreporforcustomer;
+package com.har.quickrepairforandroid;
 
 public class AccountHolder {
 
 	private String mAccount;
 	private String mPassword;
-	private boolean mIsCustomer;
+	private boolean mIsCustomer = false;
+	private boolean mIsLogin = false;
 
 	private static final AccountHolder ourInstance = new AccountHolder();
 
@@ -37,5 +38,13 @@ public class AccountHolder {
 
 	public void setIsCustomer(boolean isCustomer) {
 		mIsCustomer = isCustomer;
+	}
+
+	public boolean getIsLogin() {
+		return mIsLogin;
+	}
+
+	public void setIsLogin(boolean login) {
+		mIsLogin = login;
 	}
 }
