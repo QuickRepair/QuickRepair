@@ -18,4 +18,10 @@
     <string name="verification_send_successed">成功发送验证码</string>
     <string name="login_successsed">成功登陆</string>
 	<string name="have_not_login">未登陆</string>
+    <string name="add_order">添加订单</string>
+	<string name="order_detail_descrip">添加详细描述</string>
+	<string name="order_appliance_type">选择家电类型</string>
+	<string name="order_merchant_choose">选择商家</string>
+	<string name="submit_order">提交订单</string>
+	<string name="add_images">添加图片</string>
 </resources>

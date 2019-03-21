@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:layout_marginTop="10dp"
+	android:layout_marginBottom="10dp"
+	android:layout_marginStart="10dp"
+	android:layout_marginEnd="10dp"
+	tools:context=".AddOrderFragment">
+
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical">
+
+		<TableLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<TableRow
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_marginBottom="10dp">
+
+				<TextView
+					android:id="@+id/textView2"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/order_merchant_choose"
+					android:textSize="18sp" />
+
+				<Spinner
+					android:id="@+id/merchantListSpinner"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_weight="1" />
+			</TableRow>
+
+			<TableRow
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_marginTop="10dp" >
+
+				<TextView
+					android:id="@+id/textView"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/order_appliance_type"
+					android:textSize="18sp" />
+
+				<Spinner
+					android:id="@+id/applianceTypeSpinner"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"  />
+			</TableRow>
+
+		</TableLayout>
+
+		<TextView
+			android:id="@+id/textView3"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="10dp"
+			android:text="@string/add_images" />
+
+		<TableLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="10dp" >
+
+			<TableRow
+				android:layout_width="match_parent"
+				android:layout_height="match_parent" >
+
+				<ImageView
+					android:id="@+id/imageView"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@drawable/ic_action_add" />
+			</TableRow>
+
+		</TableLayout>
+
+		<EditText
+			android:id="@+id/detailEditText"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="10dp"
+			android:ems="10"
+			android:hint="@string/order_detail_descrip"
+			android:inputType="textMultiLine" />
+
+		<Button
+			android:id="@+id/submitButton"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="10dp"
+			android:text="@string/submit_order" />
+	</LinearLayout>
+
+</FrameLayout>

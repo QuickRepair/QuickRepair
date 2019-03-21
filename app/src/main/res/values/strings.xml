@@ -17,4 +17,12 @@
 	<string name="verification_send_successed">Verification code just send to your phone</string>
 	<string name="login_successsed">Login successed</string>
 	<string name="have_not_login">Have not login</string>
+	<string name="add_order">Add order</string>
+
+	<!-- TODO: Remove or change this placeholder text -->
+	<string name="order_detail_descrip">Enter detail descrip</string>
+	<string name="order_appliance_type">Select Appliance type</string>
+	<string name="order_merchant_choose">Choose a merchant</string>
+	<string name="submit_order">Submit order</string>
+	<string name="add_images">Add images</string>
 </resources>
