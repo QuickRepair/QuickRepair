@@ -109,13 +109,13 @@ public class LoginFragment extends Fragment {
 	}
 
 	private boolean isValidPhoneNumber(String phoneNumber) {
-		int length = getContext().getResources().getInteger(R.integer.phone_number);
+		int length = getContext().getResources().getInteger(R.integer.phone_number_length);
 		String regex = "(\\+\\d+)?1[34578]\\d{" + (length - 2) + "}$";
 		return Pattern.matches(regex, phoneNumber);
 	}
 
 	private boolean isValidVerificationCode(String verification) {
-		int length = getContext().getResources().getInteger(R.integer.verification);
+		int length = getContext().getResources().getInteger(R.integer.verification_length);
 		String regex = "\\d{" + length + "}$";
 		return Pattern.matches(regex, verification);
 	}
@@ -130,7 +130,7 @@ public class LoginFragment extends Fragment {
 		public Request makeRequest() {
 			String accountType = mLoginTypeSwitch.isChecked() ? "merchant" : "customer";
 			HttpUrl url = HttpUrl
-					.parse("http://10.42.0.1:12345")
+					.parse(getContext().getResources().getString(R.string.server_ip))
 					.newBuilder()
 					.addQueryParameter("verification", mAccountText.getText().toString())
 					.addQueryParameter("account_type", accountType)
@@ -167,7 +167,7 @@ public class LoginFragment extends Fragment {
 				json.put("password", mPasswordText.getText().toString());
 				json.put("account_type", mLoginTypeSwitch.isChecked() ? "merchant" : "customer");
 				RequestBody requestBody = RequestBody.create(AsyncTransmissionTask.TypeJson, json.toString());
-				return new Request.Builder().url("http://10.42.0.1:12345").post(requestBody).build();
+				return new Request.Builder().url(getContext().getResources().getString(R.string.server_ip)).post(requestBody).build();
 			} catch (JSONException je) {
 				//TODO
 				return null;

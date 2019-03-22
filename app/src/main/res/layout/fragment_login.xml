@@ -16,7 +16,7 @@
         android:ems="10"
         android:hint="@string/input_phone"
         android:inputType="phone"
-        android:maxLength="@integer/phone_number" />
+        android:maxLength="@integer/phone_number_length" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,7 +34,7 @@
             android:ems="10"
             android:hint="@string/input_password"
             android:inputType="numberPassword"
-            android:maxLength="@integer/verification"/>
+            android:maxLength="@integer/verification_length"/>
 
         <Button
             android:id="@+id/buttonGetVerification"

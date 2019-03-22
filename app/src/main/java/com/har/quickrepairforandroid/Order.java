@@ -8,7 +8,7 @@ public class Order {
 	private Date mDate;
 
 	public Order() {
-		mTitle = "title";
+		mTitle = "order_title";
 		mDate = new Date();
 	}
 
