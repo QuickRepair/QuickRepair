@@ -26,10 +26,20 @@
 				android:layout_marginEnd="10dp"
 				android:text="@string/selectDistance" />
 
-			<Spinner
-				android:id="@+id/distanceSpinner"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content" />
+			<EditText
+				android:id="@+id/distanceEditText"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="10dp"
+				android:ems="10"
+				android:inputType="number" />
+
+			<TextView
+				android:id="@+id/textView5"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:text="@string/distacUnit" />
 		</LinearLayout>
 
 		<TextView
@@ -41,20 +51,6 @@
 
 		<EditText
 			android:id="@+id/supportAppliancesEditText"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:ems="10"
-			android:inputType="textMultiLine" />
-
-		<TextView
-			android:id="@+id/textView8"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_marginTop="10dp"
-			android:text="@string/notSupportAppliances" />
-
-		<EditText
-			android:id="@+id/notSupportAppliancesEditText"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:ems="10"

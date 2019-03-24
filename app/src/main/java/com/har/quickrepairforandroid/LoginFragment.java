@@ -145,7 +145,6 @@ public class LoginFragment extends Fragment {
 
 		@Override
 		public void handler(Response response) {
-			//TODO
 			mMainHandler.post(new Runnable() {
 				@Override
 				public void run() {
@@ -175,7 +174,7 @@ public class LoginFragment extends Fragment {
 				RequestBody requestBody = RequestBody.create(AsyncTransmissionTask.TypeJson, json.toString());
 				return new Request.Builder().url(getContext().getResources().getString(R.string.server_ip)).post(requestBody).build();
 			} catch (JSONException je) {
-				//TODO
+				je.printStackTrace();
 				return null;
 			}
 		}
@@ -242,7 +241,7 @@ public class LoginFragment extends Fragment {
 			} catch (JSONException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
-				//TODO
+				e.printStackTrace();
 			}
 		}
 	}

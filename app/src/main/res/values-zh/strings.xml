@@ -32,8 +32,8 @@
 	<string name="spinner_data_empty">商家或电器列表为空，无法提交</string>
 	<string name="about_me_register_service">注册提供的服务</string>
 	<string name="order_detail_here">添加详细描述</string>
-	<string name="selectDistance">选择最远维修距离</string>
-	<string name="supportAppliances">支持的电器</string>
-	<string name="notSupportAppliances">不支持的电器</string>
+	<string name="selectDistance">输入最远维修距离</string>
+	<string name="supportAppliances">支持的电器（使用\';\'分隔）</string>
 	<string name="submitRegisterService">提交</string>
+	<string name="distacUnit">米</string>
 </resources>

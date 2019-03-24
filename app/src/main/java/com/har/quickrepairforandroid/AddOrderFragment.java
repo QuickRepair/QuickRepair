@@ -40,7 +40,7 @@ public class AddOrderFragment extends Fragment {
 	private Spinner mApplianceTypeSpinner;
 	private Button mSubmitButton;
 
-	private WaitLoadingFragment waitSubmit;
+	private WaitLoadingFragment mWaitSubmit;
 	private static final String WAITING_SUBMIT = "wait_for_submit";
 
 	private Handler mMainHandler;
@@ -73,8 +73,8 @@ public class AddOrderFragment extends Fragment {
 				} else {
 					new SubmitOrderTask().execute();
 					FragmentManager fm = getFragmentManager();
-					waitSubmit = WaitLoadingFragment.newInstance();
-					waitSubmit.show(fm, WAITING_SUBMIT);
+					mWaitSubmit = WaitLoadingFragment.newInstance();
+					mWaitSubmit.show(fm, WAITING_SUBMIT);
 				}
 			}
 		});
@@ -143,7 +143,6 @@ public class AddOrderFragment extends Fragment {
 					String name = jsonArray.getString(i);
 					mMerchantList.add(new Merchant(name));
 				}
-
 
 				for (Merchant merchant : mMerchantList) {
 					Map<String, Object> m = new HashMap<>();

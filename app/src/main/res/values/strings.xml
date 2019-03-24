@@ -19,7 +19,6 @@
 	<string name="have_not_login">Have not login</string>
 	<string name="add_order">Add order</string>
 
-	<!-- TODO: Remove or change this placeholder text -->
 	<string name="order_detail_descrip">Details</string>
 	<string name="order_appliance_type">Select Appliance type</string>
 	<string name="order_merchant_choose">Choose a merchant</string>
@@ -33,10 +32,9 @@
 	<string name="spinner_data_empty">Get empty list, can not submit</string>
 	<string name="about_me_register_service">Register provide service</string>
 
-	<!-- TODO: Remove or change this placeholder text -->
 	<string name="order_detail_here">Enter detail descrip</string>
-	<string name="selectDistance">Select repair distance</string>
-	<string name="supportAppliances">Support appliances list</string>
-	<string name="notSupportAppliances">Not support appliances</string>
+	<string name="selectDistance">Input repair distance</string>
+	<string name="supportAppliances">Support appliances list(use \';\' to split)</string>
 	<string name="submitRegisterService">Submit</string>
+	<string name="distacUnit">M</string>
 </resources>
