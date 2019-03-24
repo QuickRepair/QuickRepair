@@ -89,6 +89,21 @@
 		</TableLayout>
 
 		<TextView
+			android:id="@+id/textView8"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="10dp"
+			android:text="@string/address_descrip" />
+
+		<EditText
+			android:id="@+id/addressEditText"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:ems="10"
+			android:hint="@string/address_descrip_input"
+			android:inputType="text" />
+
+		<TextView
 			android:id="@+id/textView4"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"

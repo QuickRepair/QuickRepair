@@ -37,4 +37,6 @@
 	<string name="supportAppliances">Support appliances list(use \';\' to split)</string>
 	<string name="submitRegisterService">Submit</string>
 	<string name="distacUnit">M</string>
+	<string name="address_descrip">Address information</string>
+	<string name="address_descrip_input">Input address</string>
 </resources>

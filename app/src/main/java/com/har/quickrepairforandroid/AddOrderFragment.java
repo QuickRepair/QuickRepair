@@ -11,12 +11,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.har.quickrepairforandroid.AsyncTransmissions.AsyncTransmissionTask;
 import com.har.quickrepairforandroid.AsyncTransmissions.HttpConnection;
+import com.har.quickrepairforandroid.Models.AccountHolder;
 import com.har.quickrepairforandroid.Models.ApplianceType;
 import com.har.quickrepairforandroid.Models.Merchant;
 import com.squareup.okhttp.HttpUrl;
@@ -39,6 +41,8 @@ public class AddOrderFragment extends Fragment {
 	private Spinner mMerchantSpinner;
 	private Spinner mApplianceTypeSpinner;
 	private Button mSubmitButton;
+	private EditText mDetailEditText;
+	private EditText mAddressEditText;
 
 	private WaitLoadingFragment mWaitSubmit;
 	private static final String WAITING_SUBMIT = "wait_for_submit";
@@ -58,6 +62,8 @@ public class AddOrderFragment extends Fragment {
 		mMerchantSpinner = (Spinner)v.findViewById(R.id.merchantListSpinner);
 		mApplianceTypeSpinner = (Spinner)v.findViewById(R.id.applianceTypeSpinner);
 		mSubmitButton = (Button)v.findViewById(R.id.submitButton);
+		mDetailEditText = (EditText)v.findViewById(R.id.detailEditText);
+		mAddressEditText = (EditText)v.findViewById(R.id.addressEditText);
 
 		mMerchantSpinner.setEnabled(false);
 		mApplianceTypeSpinner.setEnabled(false);
@@ -234,12 +240,16 @@ public class AddOrderFragment extends Fragment {
 		public Request makeRequest() {
 			try {
 				JSONObject json = new JSONObject();
-				json.put("merchant", mMerchantList.get(mMerchantSpinner.getSelectedItemPosition()));
-				json.put("appliance", mApplianceTypeList.get(mApplianceTypeSpinner.getSelectedItemPosition()));
+				json.put("type", "submit_order");
+				json.put("merchant", mMerchantList.get(mMerchantSpinner.getSelectedItemPosition()).name());
+				json.put("appliance", mApplianceTypeList.get(mApplianceTypeSpinner.getSelectedItemPosition()).name());
+				json.put("detail", mDetailEditText.getText().toString());
+				json.put("address", mAddressEditText.getText().toString());
+				json.put("account", AccountHolder.getInstance().getAccount());
 				RequestBody requestBody = RequestBody.create(AsyncTransmissionTask.TypeJson, json.toString());
 				return new Request.Builder().url(getContext().getResources().getString(R.string.server_ip)).post(requestBody).build();
 			} catch (JSONException je) {
-				//TODO
+				je.printStackTrace();
 				return null;
 			}
 		}

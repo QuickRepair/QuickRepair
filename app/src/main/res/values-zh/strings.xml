@@ -36,4 +36,6 @@
 	<string name="supportAppliances">支持的电器（使用\';\'分隔）</string>
 	<string name="submitRegisterService">提交</string>
 	<string name="distacUnit">米</string>
+	<string name="address_descrip">地址信息</string>
+	<string name="address_descrip_input">输入地址</string>
 </resources>
