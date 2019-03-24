@@ -20,9 +20,23 @@
 	<string name="add_order">Add order</string>
 
 	<!-- TODO: Remove or change this placeholder text -->
-	<string name="order_detail_descrip">Enter detail descrip</string>
+	<string name="order_detail_descrip">Details</string>
 	<string name="order_appliance_type">Select Appliance type</string>
 	<string name="order_merchant_choose">Choose a merchant</string>
 	<string name="submit_order">Submit order</string>
 	<string name="add_images">Add images</string>
+	<string name="login_failed_title">Login failed</string>
+	<string name="login_failed_no_such_account">No such an account</string>
+	<string name="login_failed_ok_button">OK</string>
+	<string name="login_failed_wrong_password">Password wrong</string>
+	<string name="spinner_data_not_received">Wait for receiving Merchant and Appliance list</string>
+	<string name="spinner_data_empty">Get empty list, can not submit</string>
+	<string name="about_me_register_service">Register provide service</string>
+
+	<!-- TODO: Remove or change this placeholder text -->
+	<string name="order_detail_here">Enter detail descrip</string>
+	<string name="selectDistance">Select repair distance</string>
+	<string name="supportAppliances">Support appliances list</string>
+	<string name="notSupportAppliances">Not support appliances</string>
+	<string name="submitRegisterService">Submit</string>
 </resources>

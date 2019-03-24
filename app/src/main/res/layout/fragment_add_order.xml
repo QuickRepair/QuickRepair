@@ -88,13 +88,19 @@
 
 		</TableLayout>
 
+		<TextView
+			android:id="@+id/textView4"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="10dp"
+			android:text="@string/order_detail_descrip" />
+
 		<EditText
 			android:id="@+id/detailEditText"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_marginTop="10dp"
 			android:ems="10"
-			android:hint="@string/order_detail_descrip"
+			android:hint="@string/order_detail_here"
 			android:inputType="textMultiLine" />
 
 		<Button
