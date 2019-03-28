@@ -256,6 +256,14 @@ public class AddOrderFragment extends Fragment {
 
 		@Override
 		public void handler(Response response) {
+			mMainHandler.post(new Runnable() {
+				@Override
+				public void run() {
+					mWaitSubmit.dismiss();
+					Toast.makeText(getContext(), R.string.submit_done, Toast.LENGTH_SHORT).show();
+					getActivity().onBackPressed();
+				}
+			});
 		}
 	}
 }

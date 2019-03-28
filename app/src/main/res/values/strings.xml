@@ -39,4 +39,5 @@
 	<string name="distacUnit">M</string>
 	<string name="address_descrip">Address information</string>
 	<string name="address_descrip_input">Input address</string>
+	<string name="submit_done">Submit successed</string>
 </resources>

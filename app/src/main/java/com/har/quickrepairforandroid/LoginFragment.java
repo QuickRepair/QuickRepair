@@ -190,51 +190,36 @@ public class LoginFragment extends Fragment {
 					@Override
 					public void run() {
 						if(loginResult.equalsIgnoreCase("success")) {// login successed
-							mMainHandler.post(new Runnable() {
-								@Override
-								public void run() {
-									mLoginWaitingFragment.dismiss();
-									AccountHolder.getInstance().setAccount(mAccountText.getText().toString());
-									AccountHolder.getInstance().setPassword(mPasswordText.getText().toString());
-									AccountHolder.getInstance().setIsCustomer(!mLoginTypeSwitch.isChecked());
-									AccountHolder.getInstance().setIsLogin(true);
-									// make toast
-									Toast.makeText(getActivity(), R.string.login_successsed, Toast.LENGTH_SHORT).show();
-									getActivity().onBackPressed();
-								}
-							});
+							mLoginWaitingFragment.dismiss();
+							AccountHolder.getInstance().setAccount(mAccountText.getText().toString());
+							AccountHolder.getInstance().setPassword(mPasswordText.getText().toString());
+							AccountHolder.getInstance().setIsCustomer(!mLoginTypeSwitch.isChecked());
+							AccountHolder.getInstance().setIsLogin(true);
+							// make toast
+							Toast.makeText(getActivity(), R.string.login_successsed, Toast.LENGTH_SHORT).show();
+							getActivity().onBackPressed();
 						} else if(loginResult.equalsIgnoreCase("no such an account")){  // login failed: no account
-							mMainHandler.post(new Runnable() {
+							mLoginWaitingFragment.dismiss();
+							AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
+							dialog.setTitle(R.string.login_failed_title);
+							dialog.setMessage(R.string.login_failed_no_such_account);
+							dialog.setPositiveButton(R.string.login_failed_ok_button, new DialogInterface.OnClickListener() {
 								@Override
-								public void run() {
-									mLoginWaitingFragment.dismiss();
-									AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
-									dialog.setTitle(R.string.login_failed_title);
-									dialog.setMessage(R.string.login_failed_no_such_account);
-									dialog.setPositiveButton(R.string.login_failed_ok_button, new DialogInterface.OnClickListener() {
-										@Override
-										public void onClick(DialogInterface dialog, int which) {
-										}
-									});
-									dialog.show();
+								public void onClick(DialogInterface dialog, int which) {
 								}
 							});
+							dialog.show();
 						} else if(loginResult.equalsIgnoreCase("wrong password")) {     //login failed: password wrong
-							mMainHandler.post(new Runnable() {
+							mLoginWaitingFragment.dismiss();
+							AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
+							dialog.setTitle(R.string.login_failed_title);
+							dialog.setMessage(R.string.login_failed_wrong_password);
+							dialog.setPositiveButton(R.string.login_failed_ok_button, new DialogInterface.OnClickListener() {
 								@Override
-								public void run() {
-									mLoginWaitingFragment.dismiss();
-									AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
-									dialog.setTitle(R.string.login_failed_title);
-									dialog.setMessage(R.string.login_failed_wrong_password);
-									dialog.setPositiveButton(R.string.login_failed_ok_button, new DialogInterface.OnClickListener() {
-										@Override
-										public void onClick(DialogInterface dialog, int which) {
-										}
-									});
-									dialog.show();
+								public void onClick(DialogInterface dialog, int which) {
 								}
 							});
+							dialog.show();
 						}
 					}
 				});

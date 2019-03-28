@@ -38,4 +38,5 @@
 	<string name="distacUnit">米</string>
 	<string name="address_descrip">地址信息</string>
 	<string name="address_descrip_input">输入地址</string>
+	<string name="submit_done">提交成功</string>
 </resources>
