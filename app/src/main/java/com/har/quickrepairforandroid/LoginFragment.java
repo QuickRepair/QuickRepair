@@ -2,6 +2,7 @@ package com.har.quickrepairforandroid;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import com.har.quickrepairforandroid.AsyncTransmissions.AsyncTransmissionTask;
 import com.har.quickrepairforandroid.AsyncTransmissions.HttpConnection;
+import com.har.quickrepairforandroid.Database.AccountBaseHelper;
 import com.har.quickrepairforandroid.Models.AccountHolder;
 import com.squareup.okhttp.HttpUrl;
 import com.squareup.okhttp.Request;
@@ -195,6 +197,8 @@ public class LoginFragment extends Fragment {
 							AccountHolder.getInstance().setPassword(mPasswordText.getText().toString());
 							AccountHolder.getInstance().setIsCustomer(!mLoginTypeSwitch.isChecked());
 							AccountHolder.getInstance().setIsLogin(true);
+							SQLiteDatabase database = new AccountBaseHelper(getContext()).getReadableDatabase();
+							AccountHolder.getInstance().updateAccount(database);
 							// make toast
 							Toast.makeText(getActivity(), R.string.login_successsed, Toast.LENGTH_SHORT).show();
 							getActivity().onBackPressed();

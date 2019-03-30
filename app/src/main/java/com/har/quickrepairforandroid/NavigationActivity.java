@@ -1,5 +1,6 @@
 package com.har.quickrepairforandroid;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -9,6 +10,10 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+
+import com.har.quickrepairforandroid.Database.AccountBaseHelper;
+import com.har.quickrepairforandroid.Database.AccountCursorWrapper;
+import com.har.quickrepairforandroid.Models.AccountHolder;
 
 public class NavigationActivity extends AppCompatActivity {
 
@@ -95,5 +100,17 @@ public class NavigationActivity extends AppCompatActivity {
 				return false;
 			}
 		});
+
+		readAccountFromDatabase();
+	}
+
+	private void readAccountFromDatabase() {
+		SQLiteDatabase database = new AccountBaseHelper(getApplicationContext()).getReadableDatabase();
+		AccountCursorWrapper cursor = AccountHolder.getInstance().queryAccount(database);
+		if(!cursor.isAfterLast()) {
+			AccountHolder.getInstance().setAccount(cursor.getAccount());
+			AccountHolder.getInstance().setPassword(cursor.getPassword());
+			AccountHolder.getInstance().setIsCustomer(cursor.getIsCustomer());
+		}
 	}
 }
