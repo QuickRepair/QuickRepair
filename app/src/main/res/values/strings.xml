@@ -20,7 +20,7 @@
 	<string name="add_order">Add order</string>
 
 	<string name="order_detail_descrip">Details</string>
-	<string name="order_appliance_type">Select Appliance type</string>
+	<string name="select_appliance_type">Select Appliance type</string>
 	<string name="order_merchant_choose">Choose a merchant</string>
 	<string name="submit_order">Submit order</string>
 	<string name="add_images">Add images</string>
@@ -40,4 +40,23 @@
 	<string name="address_descrip">Address information</string>
 	<string name="address_descrip_input">Input address</string>
 	<string name="submit_done">Submit successed</string>
+	<string name="order_state">Order state:</string>
+	<string name="order_state_unreceived">Unreceived</string>
+	<string name="order_state_received">Received</string>
+	<string name="order_state_repairing">Repairing</string>
+	<string name="order_state_paying">Paying</string>
+	<string name="order_state_finished">Finished</string>
+	<string name="order_state_rejected">Rejected</string>
+	<string name="order_submit_date">Submit date:</string>
+	<string name="order_start_repair_date">Start repair date:</string>
+	<string name="order_end_repair_date">End repair date:</string>
+	<string name="order_pay_date">Pay date:</string>
+	<string name="order_finish_date">Finish date:</string>
+	<string name="order_reject_date">Reject date:</string>
+	<string name="order_accept_date">Accept date:</string>
+	<string name="appliance_type">Appliance type:</string>
+	<string name="detail_descrip">Detail descrip:</string>
+	<string name="order_time">Order time:</string>
+
+	<!-- TODO: Remove or change this placeholder text -->
 </resources>

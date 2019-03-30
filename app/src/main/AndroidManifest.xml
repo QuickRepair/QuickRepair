@@ -11,7 +11,8 @@
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
-		<activity android:name=".RegisterServiceActivity"></activity>
+		<activity android:name=".OrderDetailActivity"></activity>
+		<activity android:name=".RegisterServiceActivity" />
 		<activity android:name=".AddOrderActivity" />
 		<activity
 			android:name=".NavigationActivity"

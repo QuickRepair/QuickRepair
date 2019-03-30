@@ -113,12 +113,14 @@ public class OrderListFragment extends Fragment {
 		public void onClick(View v) {
 			// TODO
 			Toast.makeText(getContext(), "enter", Toast.LENGTH_SHORT).show();
+			Intent intent = OrderDetailActivity.newIntent(getActivity(), mOrder.id());
+			startActivity(intent);
 		}
 
 		public void bind(Order order) {
 			mOrder = order;
-			mOrderTitle.setText(mOrder.type() + " " + mOrder.date());
-			mOrderDate.setText(mOrder.detail());
+			mOrderTitle.setText(mOrder.applianceType());
+			mOrderDate.setText(mOrder.createDate());
 		}
 	}
 
@@ -198,9 +200,8 @@ public class OrderListFragment extends Fragment {
 					JSONObject item = jsonArray.getJSONObject(i);
 					String date = item.getString("create_date");
 					String type = item.getString("appliance_type");
-					String detail = item.getString("detail");
 					long id = item.getLong("id");
-					orderList.add(new Order(id, date, type, detail));
+					orderList.add(new Order(id, date, type));
 				}
 			} catch (JSONException je) {
 				je.printStackTrace();

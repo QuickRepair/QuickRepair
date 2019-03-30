@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:layout_marginStart="10dp"
+	android:layout_marginEnd="10dp"
+	android:layout_marginTop="10dp"
+	android:layout_marginBottom="10dp"
+	tools:context=".OrderDetailFragment" >
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="20dp"
+		android:orientation="horizontal">
+
+		<TextView
+			android:id="@+id/textView11"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="10dp"
+			android:text="@string/order_state"
+			android:textSize="18sp" />
+
+		<TextView
+			android:id="@+id/orderStateTextView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/order_state_unreceived"
+			android:textSize="30sp" />
+	</LinearLayout>
+
+	<TextView
+		android:id="@+id/textView18"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/appliance_type"
+		android:textSize="18sp" />
+
+	<TextView
+		android:id="@+id/applianceTypeTextView"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="20dp"
+		android:text="TextView" />
+
+	<TextView
+		android:id="@+id/textView19"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/detail_descrip"
+		android:textSize="18sp" />
+
+	<TextView
+		android:id="@+id/detailDescripTextView"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="20dp"
+		android:text="TextView" />
+
+	<TextView
+		android:id="@+id/textView22"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/order_time"
+		android:textSize="18sp" />
+
+	<TableLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<TableRow
+			android:layout_width="match_parent"
+			android:layout_height="match_parent" >
+
+			<TextView
+				android:id="@+id/textView10"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/order_submit_date" />
+
+			<TextView
+				android:id="@+id/orderSubmitDateTextView"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="TextView" />
+		</TableRow>
+
+		<TableRow
+			android:layout_width="match_parent"
+			android:layout_height="match_parent" >
+
+			<TextView
+				android:id="@+id/textView13"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/order_start_repair_date" />
+
+			<TextView
+				android:id="@+id/orderStartRepairDateTextView"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="TextView" />
+		</TableRow>
+
+		<TableRow
+			android:layout_width="match_parent"
+			android:layout_height="match_parent" >
+
+			<TextView
+				android:id="@+id/textView14"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/order_end_repair_date" />
+
+			<TextView
+				android:id="@+id/orderEndRepairDateTextView"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="TextView" />
+		</TableRow>
+
+		<TableRow
+			android:layout_width="match_parent"
+			android:layout_height="match_parent" >
+
+			<TextView
+				android:id="@+id/textView15"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/order_pay_date" />
+
+			<TextView
+				android:id="@+id/orderPayDateTextView"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="TextView" />
+
+		</TableRow>
+
+		<TableRow
+			android:layout_width="match_parent"
+			android:layout_height="match_parent" >
+
+			<TextView
+				android:id="@+id/textView16"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/order_finish_date" />
+
+			<TextView
+				android:id="@+id/orderFinishDateTextView"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="TextView" />
+		</TableRow>
+
+		<TableRow
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+
+			<TextView
+				android:id="@+id/textView17"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/order_reject_date" />
+
+			<TextView
+				android:id="@+id/orderRejectDateTextView"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="TextView" />
+		</TableRow>
+	</TableLayout>
+
+</LinearLayout>

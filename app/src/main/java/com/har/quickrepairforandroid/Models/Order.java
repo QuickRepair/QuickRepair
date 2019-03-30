@@ -1,19 +1,27 @@
 package com.har.quickrepairforandroid.Models;
 
-import java.util.Date;
-
 public class Order {
 
-	private long mId;
-	private String mType;
-	private String mDate;
-	private String mDetail;
+	public enum State { unreceived, received, repairing, paying, finished, reject }
 
-	public Order(long id, String date, String type, String detail) {
+	private long mId;
+	private String mApplianceType;
+	private String mDetail;
+	private State mOrderState;
+
+	private String mCreateDate;
+	private String mReceivedDate;
+	private String mStartRepairDate;
+	private String mEndRepairDate;
+	private String mFinishDate;
+	private String mRejectDate;
+
+	public Order() {}
+
+	public Order(long id, String createDate, String applianceType) {
 		mId = id;
-		mType = type;
-		mDate = date;
-		mDetail = detail;
+		mApplianceType = applianceType;
+		mCreateDate = createDate;
 	}
 
 	public long id() {
@@ -24,20 +32,12 @@ public class Order {
 		mId = id;
 	}
 
-	public String type() {
-		return mType;
+	public String applianceType() {
+		return mApplianceType;
 	}
 
-	public void setType(String type) {
-		mType = type;
-	}
-
-	public String date() {
-		return mDate;
-	}
-
-	public void setDate(String date) {
-		mDate = date;
+	public void setApplianceType(String applianceType) {
+		mApplianceType = applianceType;
 	}
 
 	public String detail() {
@@ -46,5 +46,61 @@ public class Order {
 
 	public void setDetail(String detail) {
 		mDetail = detail;
+	}
+
+	public State orderState() {
+		return mOrderState;
+	}
+
+	public void setOrderState(State orderState) {
+		mOrderState = orderState;
+	}
+
+	public String createDate() {
+		return mCreateDate;
+	}
+
+	public void setCreateDate(String createDate) {
+		mCreateDate = createDate;
+	}
+
+	public String receivedDate() {
+		return mReceivedDate;
+	}
+
+	public void setReceivedDate(String receivedDate) {
+		mReceivedDate = receivedDate;
+	}
+
+	public String startRepairDate() {
+		return mStartRepairDate;
+	}
+
+	public void setStartRepairDate(String startRepairDate) {
+		mStartRepairDate = startRepairDate;
+	}
+
+	public String endRepairDate() {
+		return mEndRepairDate;
+	}
+
+	public void setEndRepairDate(String endRepairDate) {
+		mEndRepairDate = endRepairDate;
+	}
+
+	public String finishDate() {
+		return mFinishDate;
+	}
+
+	public void setFinishDate(String finishDate) {
+		mFinishDate = finishDate;
+	}
+
+	public String rejectDate() {
+		return mRejectDate;
+	}
+
+	public void setRejectDate(String rejectDate) {
+		mRejectDate = rejectDate;
 	}
 }
