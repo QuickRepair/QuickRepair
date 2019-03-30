@@ -2,6 +2,7 @@ package com.har.quickrepairforandroid;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,19 +14,38 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.har.quickrepairforandroid.AsyncTransmissions.AsyncTransmissionTask;
+import com.har.quickrepairforandroid.AsyncTransmissions.HttpConnection;
+import com.har.quickrepairforandroid.Models.AccountHolder;
+import com.har.quickrepairforandroid.Models.ApplianceType;
 import com.har.quickrepairforandroid.Models.Order;
+import com.squareup.okhttp.HttpUrl;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class OrderListFragment extends Fragment {
 
-	private RecyclerView mOrderRecyclerView;
+	List<Order> mOrdersList;
 
+	private RecyclerView mOrderRecyclerView;
 	private OrderAdapter mAdapter;
+
+	private Handler mMainHandler;
 
 	public static OrderListFragment newInstance() {
 		return new OrderListFragment();
@@ -38,15 +58,13 @@ public class OrderListFragment extends Fragment {
 		mOrderRecyclerView = (RecyclerView)v.findViewById(R.id.order_recycler_view);
 		mOrderRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-		//TODO
-		//for testing
-		List<Order> orders = new ArrayList<Order>();
-		orders.add(new Order());
-		orders.add(new Order());
-		mAdapter = new OrderAdapter(orders);
+		mMainHandler = new Handler();
+		mOrdersList = new ArrayList<>();
+		mAdapter = new OrderAdapter(mOrdersList);
 		mOrderRecyclerView.setAdapter(mAdapter);
 
 		setHasOptionsMenu(true);
+		new GetOrderListTask().execute();
 
 		return v;
 	}
@@ -67,6 +85,12 @@ public class OrderListFragment extends Fragment {
 			default:
 				return super.onOptionsItemSelected(item);
 		}
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		new GetOrderListTask().execute();
 	}
 
 	private class OrderHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -93,8 +117,8 @@ public class OrderListFragment extends Fragment {
 
 		public void bind(Order order) {
 			mOrder = order;
-			mOrderTitle.setText(mOrder.title());
-			mOrderDate.setText(mOrder.date());
+			mOrderTitle.setText(mOrder.type() + " " + mOrder.date());
+			mOrderDate.setText(mOrder.detail());
 		}
 	}
 
@@ -122,6 +146,67 @@ public class OrderListFragment extends Fragment {
 		@Override
 		public int getItemCount() {
 			return mOrders.size();
+		}
+
+		public void setOrders(List<Order> orders) {
+			mOrders = orders;
+		}
+	}
+
+	private class GetOrderListTask implements AsyncTransmissionTask {
+		@Override
+		public void execute() {
+			HttpConnection.getInstance().getMethod(makeRequest(), this);
+		}
+
+		@Override
+		public Request makeRequest() {
+			HttpUrl url = HttpUrl
+					.parse(getContext().getResources().getString(R.string.server_ip))
+					.newBuilder()
+					.addQueryParameter("get_list", "order_list")
+					.addQueryParameter("account", AccountHolder.getInstance().getAccount())
+					.addQueryParameter("account_type", AccountHolder.getInstance().getIsCustomer() ? "customer" : "merchant")
+					.build();
+			return new Request.Builder().url(url).build();
+		}
+
+		@Override
+		public void handler(Response response) {
+			try {
+				final String findJson = response.body().string();
+				mMainHandler.post(new Runnable() {
+					@Override
+					public void run() {
+						mOrdersList = getOrderList(findJson);
+						mAdapter.setOrders(mOrdersList);
+						mAdapter.notifyDataSetChanged();
+					}
+				});
+			} catch (IOException ioe) {
+				ioe.printStackTrace();
+			}
+		}
+
+		private List<Order> getOrderList(String json) {
+			List<Order> orderList = new ArrayList<>();
+
+			try {
+				JSONObject jsonObject = new JSONObject(json);
+				JSONArray jsonArray = jsonObject.getJSONArray("order_list");
+				for (int i = 0; i < jsonArray.length(); i++) {
+					JSONObject item = jsonArray.getJSONObject(i);
+					String date = item.getString("create_date");
+					String type = item.getString("appliance_type");
+					String detail = item.getString("detail");
+					long id = item.getLong("id");
+					orderList.add(new Order(id, date, type, detail));
+				}
+			} catch (JSONException je) {
+				je.printStackTrace();
+			}
+
+			return orderList;
 		}
 	}
 }

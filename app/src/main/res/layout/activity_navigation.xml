@@ -7,11 +7,11 @@
 	tools:context=".NavigationActivity">
 
 	<android.support.v4.view.ViewPager
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
 		android:id="@+id/fragment_navigation_container"
-		app:layout_constraintBottom_toTopOf="@+id/navigation"
-		tools:layout_editor_absoluteX="0dp" />
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		app:layout_constraintBottom_toTopOf="@id/navigation"
+		app:layout_constraintTop_toTopOf="parent" />
 
 	<android.support.design.widget.BottomNavigationView
 		android:id="@+id/navigation"

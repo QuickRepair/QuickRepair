@@ -4,27 +4,47 @@ import java.util.Date;
 
 public class Order {
 
-	private String mTitle;
-	private Date mDate;
+	private long mId;
+	private String mType;
+	private String mDate;
+	private String mDetail;
 
-	public Order() {
-		mTitle = "order_title";
-		mDate = new Date();
+	public Order(long id, String date, String type, String detail) {
+		mId = id;
+		mType = type;
+		mDate = date;
+		mDetail = detail;
 	}
 
-	public String title() {
-		return mTitle;
+	public long id() {
+		return mId;
 	}
 
-	public void setTitle(String title) {
-		mTitle = title;
+	public void setId(long id) {
+		mId = id;
+	}
+
+	public String type() {
+		return mType;
+	}
+
+	public void setType(String type) {
+		mType = type;
 	}
 
 	public String date() {
-		return mDate.toString();
+		return mDate;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		mDate = date;
+	}
+
+	public String detail() {
+		return mDetail;
+	}
+
+	public void setDetail(String detail) {
+		mDetail = detail;
 	}
 }
