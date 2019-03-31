@@ -69,11 +69,11 @@
 
 	<TableLayout
 		android:layout_width="match_parent"
-		android:layout_height="match_parent">
+		android:layout_height="wrap_content">
 
 		<TableRow
 			android:layout_width="match_parent"
-			android:layout_height="match_parent" >
+			android:layout_height="match_parent">
 
 			<TextView
 				android:id="@+id/textView10"
@@ -90,7 +90,7 @@
 
 		<TableRow
 			android:layout_width="match_parent"
-			android:layout_height="match_parent" >
+			android:layout_height="match_parent">
 
 			<TextView
 				android:id="@+id/textView13"
@@ -107,7 +107,7 @@
 
 		<TableRow
 			android:layout_width="match_parent"
-			android:layout_height="match_parent" >
+			android:layout_height="match_parent">
 
 			<TextView
 				android:id="@+id/textView14"
@@ -124,7 +124,7 @@
 
 		<TableRow
 			android:layout_width="match_parent"
-			android:layout_height="match_parent" >
+			android:layout_height="match_parent">
 
 			<TextView
 				android:id="@+id/textView15"
@@ -142,7 +142,7 @@
 
 		<TableRow
 			android:layout_width="match_parent"
-			android:layout_height="match_parent" >
+			android:layout_height="match_parent">
 
 			<TextView
 				android:id="@+id/textView16"
@@ -174,5 +174,64 @@
 				android:text="TextView" />
 		</TableRow>
 	</TableLayout>
+
+	<LinearLayout
+		android:id="@+id/unreceivedLinearLayout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+
+		<Button
+			android:id="@+id/acceptOrderButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:text="@string/order_accept" />
+
+		<Button
+			android:id="@+id/rejectOrderButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:text="@string/order_reject" />
+	</LinearLayout>
+
+	<Button
+		android:id="@+id/startRepairButton"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/order_start_repair" />
+
+	<LinearLayout
+		android:id="@+id/repairingLineraLayout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+
+		<TextView
+			android:id="@+id/textView9"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/transaction_price" />
+
+		<EditText
+			android:id="@+id/transactionEditText"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:ems="10"
+			android:hint="@string/transaction_here"
+			android:inputType="number" />
+
+		<Button
+			android:id="@+id/endRepairButton"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/order_end_repair" />
+	</LinearLayout>
+
+	<Button
+		android:id="@+id/payButton"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/order_pay" />
 
 </LinearLayout>

@@ -111,8 +111,6 @@ public class OrderListFragment extends Fragment {
 
 		@Override
 		public void onClick(View v) {
-			// TODO
-			Toast.makeText(getContext(), "enter", Toast.LENGTH_SHORT).show();
 			Intent intent = OrderDetailActivity.newIntent(getActivity(), mOrder.id());
 			startActivity(intent);
 		}

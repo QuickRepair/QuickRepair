@@ -57,6 +57,15 @@
 	<string name="appliance_type">Appliance type:</string>
 	<string name="detail_descrip">Detail descrip:</string>
 	<string name="order_time">Order time:</string>
+	<string name="order_accept">Accept</string>
+	<string name="order_start_repair">Start repair</string>
+	<string name="order_end_repair">End repair</string>
+	<string name="order_pay">Pay now</string>
+	<string name="order_reject">Reject</string>
+
+	<!-- TODO: Remove or change this placeholder text -->
+	<string name="transaction_price">Transaction</string>
+	<string name="transaction_here">Input transaction</string>
 
 	<!-- TODO: Remove or change this placeholder text -->
 </resources>

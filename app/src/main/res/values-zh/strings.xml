@@ -56,4 +56,11 @@
 	<string name="appliance_type">家电类型：</string>
 	<string name="detail_descrip">详细描述：</string>
 	<string name="order_time">订单时间：</string>
+	<string name="order_accept">接收</string>
+	<string name="order_reject">拒绝</string>
+	<string name="order_start_repair">开始维修</string>
+	<string name="order_end_repair">维修完成</string>
+	<string name="order_pay">立即支付</string>
+	<string name="transaction_here">输入成交价格</string>
+	<string name="transaction_price">成交价格</string>
 </resources>
