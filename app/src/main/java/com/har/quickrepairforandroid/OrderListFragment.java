@@ -14,15 +14,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.har.quickrepairforandroid.AsyncTransmissions.AsyncTransmissionTask;
+import com.har.quickrepairforandroid.AsyncTransmissions.AsyncHttpTask;
 import com.har.quickrepairforandroid.AsyncTransmissions.HttpConnection;
 import com.har.quickrepairforandroid.Models.AccountHolder;
-import com.har.quickrepairforandroid.Models.ApplianceType;
 import com.har.quickrepairforandroid.Models.Order;
 import com.squareup.okhttp.HttpUrl;
 import com.squareup.okhttp.Request;
@@ -34,9 +30,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class OrderListFragment extends Fragment {
 
@@ -153,7 +147,7 @@ public class OrderListFragment extends Fragment {
 		}
 	}
 
-	private class GetOrderListTask implements AsyncTransmissionTask {
+	private class GetOrderListTask implements AsyncHttpTask {
 		@Override
 		public void execute() {
 			HttpConnection.getInstance().getMethod(makeRequest(), this);

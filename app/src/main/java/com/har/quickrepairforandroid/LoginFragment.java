@@ -2,7 +2,6 @@ package com.har.quickrepairforandroid;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -17,7 +16,7 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import com.har.quickrepairforandroid.AsyncTransmissions.AsyncTransmissionTask;
+import com.har.quickrepairforandroid.AsyncTransmissions.AsyncHttpTask;
 import com.har.quickrepairforandroid.AsyncTransmissions.HttpConnection;
 import com.har.quickrepairforandroid.Database.AccountBaseHelper;
 import com.har.quickrepairforandroid.Models.AccountHolder;
@@ -126,7 +125,7 @@ public class LoginFragment extends Fragment {
 		return Pattern.matches(regex, verification);
 	}
 
-	private class GetVerificationTask implements AsyncTransmissionTask {
+	private class GetVerificationTask implements AsyncHttpTask {
 		@Override
 		public void execute() {
 			HttpConnection.getInstance().getMethod(makeRequest(), this);
@@ -159,7 +158,7 @@ public class LoginFragment extends Fragment {
 		}
 	}
 
-	private class LoginTask implements AsyncTransmissionTask {
+	private class LoginTask implements AsyncHttpTask {
 		@Override
 		public void execute() {
 			HttpConnection.getInstance().postMethod(makeRequest(), this);
@@ -173,7 +172,7 @@ public class LoginFragment extends Fragment {
 				json.put("account", mAccountText.getText().toString());
 				json.put("password", mPasswordText.getText().toString());
 				json.put("account_type", mLoginTypeSwitch.isChecked() ? "merchant" : "customer");
-				RequestBody requestBody = RequestBody.create(AsyncTransmissionTask.TypeJson, json.toString());
+				RequestBody requestBody = RequestBody.create(AsyncHttpTask.TypeJson, json.toString());
 				return new Request.Builder().url(getContext().getResources().getString(R.string.server_ip)).post(requestBody).build();
 			} catch (JSONException je) {
 				je.printStackTrace();
@@ -191,14 +190,14 @@ public class LoginFragment extends Fragment {
 				mMainHandler.post(new Runnable() {
 					@Override
 					public void run() {
-						if(loginResult.equalsIgnoreCase("success")) {// login successed
+						if(loginResult.equalsIgnoreCase("success")) { // login successed
 							mLoginWaitingFragment.dismiss();
 							AccountHolder.getInstance().setAccount(mAccountText.getText().toString());
 							AccountHolder.getInstance().setPassword(mPasswordText.getText().toString());
 							AccountHolder.getInstance().setIsCustomer(!mLoginTypeSwitch.isChecked());
 							AccountHolder.getInstance().setIsLogin(true);
-							SQLiteDatabase database = new AccountBaseHelper(getContext()).getReadableDatabase();
-							AccountHolder.getInstance().updateAccount(database);
+							AccountBaseHelper helper = new AccountBaseHelper(getContext());
+							helper.updateAccount();
 							// make toast
 							Toast.makeText(getActivity(), R.string.login_successsed, Toast.LENGTH_SHORT).show();
 							getActivity().onBackPressed();

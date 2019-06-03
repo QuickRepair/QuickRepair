@@ -48,16 +48,20 @@ public class AboutMeFragment extends Fragment {
 				mAboutMeRecyclerView.setAdapter(new MerchantAboutMeAdapter());
 		} else {                                                              //did not login
 			accountTextView.setText(R.string.have_not_login);
-			accountTextView.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					if (!AccountHolder.getInstance().getIsLogin()) {
-						Intent intent = LoginActivity.newIntent(getContext());
-						startActivity(intent);
-					}
-				}
-			});
+
 		}
+		accountTextView.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if (!AccountHolder.getInstance().getIsLogin()) {
+					Intent intent = LoginActivity.newIntent(getContext());
+					startActivity(intent);
+				} else {
+					Intent intent = AccountDetailActivity.newIntent(getContext());
+					startActivity(intent);
+				}
+			}
+		});
 		return v;
 	}
 

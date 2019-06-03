@@ -9,14 +9,14 @@ public class AccountCursorWrapper extends CursorWrapper {
 	}
 
 	public String getAccount() {
-		return getString(getColumnIndex(Schema.Table.Cols.ACCOUNT));
+		return getString(getColumnIndex(Schema.AccountTable.Cols.ACCOUNT));
 	}
 
 	public String getPassword() {
-		return getString(getColumnIndex(Schema.Table.Cols.PASSWORD));
+		return getString(getColumnIndex(Schema.AccountTable.Cols.PASSWORD));
 	}
 
 	public boolean getIsCustomer() {
-		return getString(getColumnIndex(Schema.Table.Cols.ACCOUNT_TYPE)).equalsIgnoreCase("customer");
+		return getString(getColumnIndex(Schema.AccountTable.Cols.ACCOUNT_TYPE)).equalsIgnoreCase("customer");
 	}
 }

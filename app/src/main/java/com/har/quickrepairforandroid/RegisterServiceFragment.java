@@ -9,9 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 
-import com.har.quickrepairforandroid.AsyncTransmissions.AsyncTransmissionTask;
+import com.har.quickrepairforandroid.AsyncTransmissions.AsyncHttpTask;
 import com.har.quickrepairforandroid.AsyncTransmissions.HttpConnection;
 import com.har.quickrepairforandroid.Models.AccountHolder;
 import com.squareup.okhttp.HttpUrl;
@@ -65,7 +64,7 @@ public class RegisterServiceFragment extends Fragment {
 		return v;
 	}
 
-	private class getOriginServiceTypeTask implements AsyncTransmissionTask {
+	private class getOriginServiceTypeTask implements AsyncHttpTask {
 		@Override
 		public void execute() {
 			HttpConnection.getInstance().getMethod(makeRequest(), this);
@@ -107,7 +106,7 @@ public class RegisterServiceFragment extends Fragment {
 		}
 	}
 
-	private class submitServiceTypeTask implements AsyncTransmissionTask {
+	private class submitServiceTypeTask implements AsyncHttpTask {
 		@Override
 		public void execute() {
 			HttpConnection.getInstance().postMethod(makeRequest(), this);
@@ -125,7 +124,7 @@ public class RegisterServiceFragment extends Fragment {
 				jsonObject.put("support_appliance", array);
 				jsonObject.put("max_distance", Integer.parseInt(mDistanceEditText.getText().toString()));
 				jsonObject.put("account", AccountHolder.getInstance().getAccount());
-				RequestBody body = RequestBody.create(AsyncTransmissionTask.TypeJson, jsonObject.toString());
+				RequestBody body = RequestBody.create(AsyncHttpTask.TypeJson, jsonObject.toString());
 				return new Request.Builder().url(getContext().getResources().getString(R.string.server_ip)).post(body).build();
 			} catch (JSONException je) {
 				je.printStackTrace();

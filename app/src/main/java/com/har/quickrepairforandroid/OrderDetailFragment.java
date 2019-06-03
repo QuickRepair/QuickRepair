@@ -15,7 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.har.quickrepairforandroid.AsyncTransmissions.AsyncTransmissionTask;
+import com.har.quickrepairforandroid.AsyncTransmissions.AsyncHttpTask;
 import com.har.quickrepairforandroid.AsyncTransmissions.HttpConnection;
 import com.har.quickrepairforandroid.Models.AccountHolder;
 import com.har.quickrepairforandroid.Models.Order;
@@ -42,6 +42,7 @@ public class OrderDetailFragment extends Fragment {
 	private long mOrderId;
 	private Order mOrder;
 
+	private LinearLayout mLayout;
 	private TextView mOrderStateTextView;
 	private TextView mApplianceTypeTextView;
 	private TextView mDetailDescripTextView;
@@ -79,6 +80,7 @@ public class OrderDetailFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_order_detail, container, false);
 
+		mLayout = v.findViewById(R.id.order_detail_layout);
 		mOrderStateTextView = v.findViewById(R.id.orderStateTextView);
 		mApplianceTypeTextView = v.findViewById(R.id.applianceTypeTextView);
 		mDetailDescripTextView = v.findViewById(R.id.detailDescripTextView);
@@ -189,7 +191,7 @@ public class OrderDetailFragment extends Fragment {
 		}
 	}
 
-	private class GetOrderDetailTask implements AsyncTransmissionTask {
+	private class GetOrderDetailTask implements AsyncHttpTask {
 		@Override
 		public void execute() {
 			HttpConnection.getInstance().getMethod(makeRequest(), this);
@@ -276,6 +278,7 @@ public class OrderDetailFragment extends Fragment {
 						mOrderPayDateTextView.setText(mOrder.finishDate());
 					}
 				});
+				mLayout.setVisibility(View.VISIBLE);
 			} catch (IOException ioe) {
 				ioe.printStackTrace();
 			}
@@ -317,7 +320,7 @@ public class OrderDetailFragment extends Fragment {
 		}
 	}
 
-	private class AcceptOrderTask implements AsyncTransmissionTask {
+	private class AcceptOrderTask implements AsyncHttpTask {
 		@Override
 		public void execute() {
 			HttpConnection.getInstance().getMethod(makeRequest(), this);
@@ -348,7 +351,7 @@ public class OrderDetailFragment extends Fragment {
 		}
 	}
 
-	private class RejectOrderTask implements AsyncTransmissionTask {
+	private class RejectOrderTask implements AsyncHttpTask {
 		@Override
 		public void execute() {
 			HttpConnection.getInstance().getMethod(makeRequest(), this);
@@ -379,7 +382,7 @@ public class OrderDetailFragment extends Fragment {
 		}
 	}
 
-	private class StartRepairOrderTask implements AsyncTransmissionTask {
+	private class StartRepairOrderTask implements AsyncHttpTask {
 		@Override
 		public void execute() {
 			HttpConnection.getInstance().getMethod(makeRequest(), this);
@@ -410,7 +413,7 @@ public class OrderDetailFragment extends Fragment {
 		}
 	}
 
-	private class EndRepairOrderTask implements AsyncTransmissionTask {
+	private class EndRepairOrderTask implements AsyncHttpTask {
 		@Override
 		public void execute() {
 			HttpConnection.getInstance().getMethod(makeRequest(), this);

@@ -16,11 +16,13 @@ import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.har.quickrepairforandroid.AsyncTransmissions.AsyncTransmissionTask;
+import com.har.quickrepairforandroid.AsyncTransmissions.AsyncHttpTask;
 import com.har.quickrepairforandroid.AsyncTransmissions.HttpConnection;
+import com.har.quickrepairforandroid.Database.OrderBaseHelper;
 import com.har.quickrepairforandroid.Models.AccountHolder;
 import com.har.quickrepairforandroid.Models.ApplianceType;
 import com.har.quickrepairforandroid.Models.Merchant;
+import com.har.quickrepairforandroid.Models.Order;
 import com.squareup.okhttp.HttpUrl;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
@@ -95,7 +97,7 @@ public class AddOrderFragment extends Fragment {
 		return new AddOrderFragment();
 	}
 
-	private class GetMerchantListTask implements AsyncTransmissionTask {
+	private class GetMerchantListTask implements AsyncHttpTask {
 		@Override
 		public void execute() {
 			HttpConnection.getInstance().getMethod(makeRequest(), this);
@@ -162,7 +164,7 @@ public class AddOrderFragment extends Fragment {
 		}
 	}
 
-	private class GetApplianceTypeTask implements AsyncTransmissionTask {
+	private class GetApplianceTypeTask implements AsyncHttpTask {
 		@Override
 		public void execute() {
 			HttpConnection.getInstance().getMethod(makeRequest(), this);
@@ -230,7 +232,7 @@ public class AddOrderFragment extends Fragment {
 		}
 	}
 
-	private class SubmitOrderTask implements AsyncTransmissionTask {
+	private class SubmitOrderTask implements AsyncHttpTask {
 		@Override
 		public void execute() {
 			HttpConnection.getInstance().postMethod(makeRequest(), this);
@@ -246,7 +248,7 @@ public class AddOrderFragment extends Fragment {
 				json.put("detail", mDetailEditText.getText().toString());
 				json.put("address", mAddressEditText.getText().toString());
 				json.put("account", AccountHolder.getInstance().getAccount());
-				RequestBody requestBody = RequestBody.create(AsyncTransmissionTask.TypeJson, json.toString());
+				RequestBody requestBody = RequestBody.create(AsyncHttpTask.TypeJson, json.toString());
 				return new Request.Builder().url(getContext().getResources().getString(R.string.server_ip)).post(requestBody).build();
 			} catch (JSONException je) {
 				je.printStackTrace();
@@ -256,14 +258,30 @@ public class AddOrderFragment extends Fragment {
 
 		@Override
 		public void handler(Response response) {
-			mMainHandler.post(new Runnable() {
-				@Override
-				public void run() {
-					mWaitSubmit.dismiss();
-					Toast.makeText(getContext(), R.string.submit_done, Toast.LENGTH_SHORT).show();
-					getActivity().onBackPressed();
-				}
-			});
+			try {
+				final String findJson = response.body().string();
+				mMainHandler.post(new Runnable() {
+					@Override
+					public void run() {
+						try {
+							mWaitSubmit.dismiss();
+							Toast.makeText(getContext(), R.string.submit_done, Toast.LENGTH_SHORT).show();
+							JSONObject object = new JSONObject(findJson);
+							long id = object.getLong("id");
+							String type = object.getString("applican_type");
+							String date = object.getString("create_date");
+							Order order = new Order(id, date, type);
+							OrderBaseHelper helper = new OrderBaseHelper(getContext());
+							helper.insertOrder(order);
+							getActivity().onBackPressed();
+						} catch (JSONException je) {
+							je.printStackTrace();
+						}
+					}
+				});
+			} catch (IOException ioe) {
+				ioe.printStackTrace();
+			}
 		}
 	}
 }

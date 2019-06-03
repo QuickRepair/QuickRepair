@@ -4,7 +4,7 @@ import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
-public interface AsyncTransmissionTask {
+public interface AsyncHttpTask {
 	public static final MediaType TypeJson = MediaType.parse("application/json; charset=utf-8");
 	public void execute();
 	public Request makeRequest();

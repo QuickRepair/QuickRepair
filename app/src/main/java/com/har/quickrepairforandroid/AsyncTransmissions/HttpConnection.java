@@ -18,7 +18,7 @@ public class HttpConnection {
 		return mConnection;
 	}
 
-	public void getMethod(Request request, final AsyncTransmissionTask handler) {
+	public void getMethod(Request request, final AsyncHttpTask handler) {
 		Call call = mClient.newCall(request);
 		call.enqueue(new Callback() {
 			@Override
@@ -33,7 +33,7 @@ public class HttpConnection {
 		});
 	}
 
-	public void postMethod(Request request, final AsyncTransmissionTask task) {
+	public void postMethod(Request request, final AsyncHttpTask task) {
 		Call call = mClient.newCall(request);
 		call.enqueue(new Callback() {
 			@Override

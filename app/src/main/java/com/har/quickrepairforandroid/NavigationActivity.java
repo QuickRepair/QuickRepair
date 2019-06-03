@@ -1,8 +1,5 @@
 package com.har.quickrepairforandroid;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -15,7 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.har.quickrepairforandroid.AsyncTransmissions.AsyncTransmissionTask;
+import com.har.quickrepairforandroid.AsyncTransmissions.AsyncHttpTask;
 import com.har.quickrepairforandroid.AsyncTransmissions.HttpConnection;
 import com.har.quickrepairforandroid.Database.AccountBaseHelper;
 import com.har.quickrepairforandroid.Database.AccountCursorWrapper;
@@ -124,8 +121,8 @@ public class NavigationActivity extends AppCompatActivity {
 	}
 
 	private void readAccountFromDatabase() {
-		SQLiteDatabase database = new AccountBaseHelper(getApplicationContext()).getReadableDatabase();
-		AccountCursorWrapper cursor = AccountHolder.getInstance().queryAccount(database);
+		AccountBaseHelper helper = new AccountBaseHelper(getApplicationContext());
+		AccountCursorWrapper cursor = helper.queryAccount();
 		cursor.moveToFirst();
 		if(!cursor.isAfterLast()) {
 			AccountHolder.getInstance().setAccount(cursor.getAccount());
@@ -134,7 +131,7 @@ public class NavigationActivity extends AppCompatActivity {
 		}
 	}
 
-	private class AutoLoginTask implements AsyncTransmissionTask {
+	private class AutoLoginTask implements AsyncHttpTask {
 		@Override
 		public void execute() {
 			HttpConnection.getInstance().postMethod(makeRequest(), this);
@@ -148,7 +145,7 @@ public class NavigationActivity extends AppCompatActivity {
 				json.put("account", AccountHolder.getInstance().getAccount());
 				json.put("password", AccountHolder.getInstance().getPassword());
 				json.put("account_type", AccountHolder.getInstance().getIsCustomer() ? "customer" : "merchant");
-				RequestBody requestBody = RequestBody.create(AsyncTransmissionTask.TypeJson, json.toString());
+				RequestBody requestBody = RequestBody.create(AsyncHttpTask.TypeJson, json.toString());
 				return new Request.Builder().url(getApplicationContext().getResources().getString(R.string.server_ip)).post(requestBody).build();
 			} catch (JSONException je) {
 				je.printStackTrace();
