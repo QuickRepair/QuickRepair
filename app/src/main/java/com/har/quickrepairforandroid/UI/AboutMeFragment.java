@@ -1,4 +1,4 @@
-package com.har.quickrepairforandroid;
+package com.har.quickrepairforandroid.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.har.quickrepairforandroid.Models.AccountHolder;
+import com.har.quickrepairforandroid.R;
 
 public class AboutMeFragment extends Fragment {
 

@@ -1,4 +1,4 @@
-package com.har.quickrepairforandroid;
+package com.har.quickrepairforandroid.UI;
 
 import android.content.Context;
 import android.content.Intent;

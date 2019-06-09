@@ -1,9 +1,11 @@
-package com.har.quickrepairforandroid;
+package com.har.quickrepairforandroid.UI;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+
+import com.har.quickrepairforandroid.R;
 
 public abstract class FragmentAbstractActivity extends AppCompatActivity {
 

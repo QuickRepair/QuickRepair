@@ -1,4 +1,4 @@
-package com.har.quickrepairforandroid;
+package com.har.quickrepairforandroid.Weiget;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.har.quickrepairforandroid.R;
 
 public class MessageListFragment extends Fragment {
 

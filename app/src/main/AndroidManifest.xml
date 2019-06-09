@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.har.quickrepairforandroid">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -11,12 +12,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AccountDetailActivity"></activity>
-        <activity android:name=".OrderDetailActivity" />
-        <activity android:name=".RegisterServiceActivity" />
-        <activity android:name=".AddOrderActivity" />
+        <service
+            android:name=".Service.PollOrderService"
+            android:exported="false"
+            android:process=".PollOrderService"/>
+
+        <activity android:name=".UI.AccountDetailActivity" />
+        <activity android:name=".UI.OrderDetailActivity" />
+        <activity android:name=".UI.RegisterServiceActivity" />
+        <activity android:name=".UI.AddOrderActivity" />
         <activity
-            android:name=".NavigationActivity"
+            android:name=".UI.NavigationActivity"
             android:label="@string/title_activity_navigation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,9 +31,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".UI.LoginActivity"
             android:label="@string/title_activity_login"
-            android:parentActivityName=".NavigationActivity" />
+            android:parentActivityName=".UI.NavigationActivity" />
     </application>
 
 </manifest>

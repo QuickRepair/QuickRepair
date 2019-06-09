@@ -1,4 +1,4 @@
-package com.har.quickrepairforandroid;
+package com.har.quickrepairforandroid.UI;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.har.quickrepairforandroid.AsyncTransmissions.AsyncHttpTask;
 import com.har.quickrepairforandroid.AsyncTransmissions.HttpConnection;
 import com.har.quickrepairforandroid.Models.AccountHolder;
+import com.har.quickrepairforandroid.R;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 

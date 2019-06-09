@@ -1,4 +1,4 @@
-package com.har.quickrepairforandroid;
+package com.har.quickrepairforandroid.UI;
 
 
 import android.os.Bundle;
@@ -19,6 +19,8 @@ import com.har.quickrepairforandroid.AsyncTransmissions.AsyncHttpTask;
 import com.har.quickrepairforandroid.AsyncTransmissions.HttpConnection;
 import com.har.quickrepairforandroid.Models.AccountHolder;
 import com.har.quickrepairforandroid.Models.Order;
+import com.har.quickrepairforandroid.R;
+import com.har.quickrepairforandroid.Weiget.WaitLoadingFragment;
 import com.squareup.okhttp.HttpUrl;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -290,8 +292,8 @@ public class OrderDetailFragment extends Fragment {
 				JSONObject jsonObject = new JSONObject(json);
 				order.setId(jsonObject.getLong("id"));
 				order.setApplianceType(jsonObject.getString("appliance_type"));
-
 				order.setDetail(jsonObject.getString("detail"));
+
 				String orderState = jsonObject.getString("state");
 				if(orderState.equalsIgnoreCase("unreceived"))
 					order.setOrderState(Order.State.unreceived);

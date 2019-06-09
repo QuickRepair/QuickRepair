@@ -71,6 +71,7 @@
     <string name="account_string">Account</string>
     <string name="password_string">Password</string>
     <string name="account_type_string">Account type</string>
+    <string name="new_order_coming">There is a new order</string>
 
     <!-- TODO: Remove or change this placeholder text -->
 

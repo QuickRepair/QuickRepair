@@ -1,4 +1,4 @@
-package com.har.quickrepairforandroid;
+package com.har.quickrepairforandroid.UI;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -20,6 +20,8 @@ import com.har.quickrepairforandroid.AsyncTransmissions.AsyncHttpTask;
 import com.har.quickrepairforandroid.AsyncTransmissions.HttpConnection;
 import com.har.quickrepairforandroid.Database.AccountBaseHelper;
 import com.har.quickrepairforandroid.Models.AccountHolder;
+import com.har.quickrepairforandroid.R;
+import com.har.quickrepairforandroid.Weiget.WaitLoadingFragment;
 import com.squareup.okhttp.HttpUrl;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;

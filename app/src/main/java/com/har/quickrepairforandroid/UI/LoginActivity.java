@@ -1,18 +1,18 @@
-package com.har.quickrepairforandroid;
+package com.har.quickrepairforandroid.UI;
 
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 
-public class AddOrderActivity extends FragmentAbstractActivity {
+public class LoginActivity extends FragmentAbstractActivity {
 
 	@Override
 	public Fragment createFragment() {
-		return AddOrderFragment.newInstance();
+		return LoginFragment.newInstance();
 	}
 
 	public static Intent newIntent(Context context) {
-		Intent intent = new Intent(context, AddOrderActivity.class);
+		Intent intent = new Intent(context, LoginActivity.class);
 		return intent;
 	}
 }

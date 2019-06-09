@@ -1,4 +1,4 @@
-package com.har.quickrepairforandroid;
+package com.har.quickrepairforandroid.UI;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,6 +23,8 @@ import com.har.quickrepairforandroid.Models.AccountHolder;
 import com.har.quickrepairforandroid.Models.ApplianceType;
 import com.har.quickrepairforandroid.Models.Merchant;
 import com.har.quickrepairforandroid.Models.Order;
+import com.har.quickrepairforandroid.R;
+import com.har.quickrepairforandroid.Weiget.WaitLoadingFragment;
 import com.squareup.okhttp.HttpUrl;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
@@ -273,7 +275,8 @@ public class AddOrderFragment extends Fragment {
 							Order order = new Order(id, date, type);
 							OrderBaseHelper helper = new OrderBaseHelper(getContext());
 							helper.insertOrder(order);
-							getActivity().onBackPressed();
+							AddOrderFragment.this.getActivity().onBackPressed();
+							//getActivity().onBackPressed();
 						} catch (JSONException je) {
 							je.printStackTrace();
 						}

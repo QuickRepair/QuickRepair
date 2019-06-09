@@ -1,4 +1,4 @@
-package com.har.quickrepairforandroid;
+package com.har.quickrepairforandroid.UI;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,6 +17,10 @@ import com.har.quickrepairforandroid.AsyncTransmissions.HttpConnection;
 import com.har.quickrepairforandroid.Database.AccountBaseHelper;
 import com.har.quickrepairforandroid.Database.AccountCursorWrapper;
 import com.har.quickrepairforandroid.Models.AccountHolder;
+import com.har.quickrepairforandroid.R;
+import com.har.quickrepairforandroid.Service.PollOrderService;
+import com.har.quickrepairforandroid.Service.PollingUtils;
+import com.har.quickrepairforandroid.Weiget.MessageListFragment;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
@@ -116,6 +120,34 @@ public class NavigationActivity extends AppCompatActivity {
 			}
 		});
 
+		/*NotificationManager mNotificationManager = (NotificationManager)getSystemService(this.NOTIFICATION_SERVICE);
+		Notification.Builder mBuilder = new Notification.Builder(this);
+		mBuilder.setContentTitle("测试标题")
+				.setContentText("测试内容")
+				.setContentIntent(
+						PendingIntent.getActivity(
+								this,0,
+								OrderDetailActivity.newIntent(this, 11),
+								0)
+				)
+				.setTicker("测试通知来啦")
+				.setWhen(System.currentTimeMillis())
+				.setPriority(Notification.PRIORITY_MAX)
+				.setOngoing(false)
+				.setDefaults(Notification.DEFAULT_ALL)
+				.setSmallIcon(R.drawable.ic_action_add);
+		Notification notification = mBuilder.build();
+		mNotificationManager.notify(notificationId, notification);*/
+
+		/*Notification newOrderNotification = new Notification();
+		newOrderNotification.tickerText = getString(R.string.new_order_coming);
+		newOrderNotification.defaults = Notification.DEFAULT_SOUND;
+		Intent orderDetailIntent = OrderDetailActivity.newIntent(this, 11);
+		PendingIntent orderDetailPendingIntent = PendingIntent.getActivity(this, 0, orderDetailIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+		newOrderNotification.contentIntent = orderDetailPendingIntent;
+		notificationManager.notify(0, newOrderNotification);*/
+
+		PollingUtils.startPolling(this, PollOrderService.class);
 		readAccountFromDatabase();
 		new AutoLoginTask().execute();
 	}
@@ -167,6 +199,7 @@ public class NavigationActivity extends AppCompatActivity {
 							AccountHolder.getInstance().setIsLogin(true);
 							// make toast
 							Toast.makeText(NavigationActivity.this, R.string.login_successsed, Toast.LENGTH_SHORT).show();
+							PollingUtils.setUpPolling();
 						} else if(loginResult.equalsIgnoreCase("no such an account")){  // login failed: no account
 							Toast.makeText(NavigationActivity.this, R.string.login_failed_no_such_account, Toast.LENGTH_SHORT).show();
 						} else if(loginResult.equalsIgnoreCase("wrong password")) {     //login failed: password wrong

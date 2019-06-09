@@ -1,4 +1,4 @@
-package com.har.quickrepairforandroid;
+package com.har.quickrepairforandroid.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +20,7 @@ import com.har.quickrepairforandroid.AsyncTransmissions.AsyncHttpTask;
 import com.har.quickrepairforandroid.AsyncTransmissions.HttpConnection;
 import com.har.quickrepairforandroid.Models.AccountHolder;
 import com.har.quickrepairforandroid.Models.Order;
+import com.har.quickrepairforandroid.R;
 import com.squareup.okhttp.HttpUrl;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -93,6 +94,7 @@ public class OrderListFragment extends Fragment {
 
 		private TextView mOrderTitle;
 		private TextView mOrderDate;
+		private TextView mOrderState;
 
 		public OrderHolder(LayoutInflater inflater, ViewGroup parent) {
 			super(inflater.inflate(R.layout.order_list_item, parent, false));
@@ -101,6 +103,7 @@ public class OrderListFragment extends Fragment {
 
 			mOrderTitle = (TextView)itemView.findViewById(R.id.order_title);
 			mOrderDate = (TextView)itemView.findViewById(R.id.order_date);
+			mOrderState = (TextView)itemView.findViewById(R.id.order_state);
 		}
 
 		@Override
@@ -113,6 +116,15 @@ public class OrderListFragment extends Fragment {
 			mOrder = order;
 			mOrderTitle.setText(mOrder.applianceType());
 			mOrderDate.setText(mOrder.createDate());
+			switch (order.orderState())
+			{
+				case unreceived:    mOrderState.setText(R.string.order_state_unreceived);   break;
+				case received:      mOrderState.setText(R.string.order_state_received);     break;
+				case repairing:     mOrderState.setText(R.string.order_state_repairing);    break;
+				case paying:        mOrderState.setText(R.string.order_state_paying);       break;
+				case finished:      mOrderState.setText(R.string.order_state_finished);     break;
+				case reject:        mOrderState.setText(R.string.order_state_rejected);     break;
+			}
 		}
 	}
 
@@ -193,7 +205,24 @@ public class OrderListFragment extends Fragment {
 					String date = item.getString("create_date");
 					String type = item.getString("appliance_type");
 					long id = item.getLong("id");
-					orderList.add(new Order(id, date, type));
+
+					Order order = new Order(id, date, type);
+
+					String orderState = item.getString("current_state");
+					if(orderState.equalsIgnoreCase("unreceived"))
+						order.setOrderState(Order.State.unreceived);
+					else if(orderState.equalsIgnoreCase("received"))
+						order.setOrderState(Order.State.received);
+					else if(orderState.equalsIgnoreCase("repairing"))
+						order.setOrderState(Order.State.repairing);
+					else if(orderState.equalsIgnoreCase("paying"))
+						order.setOrderState(Order.State.paying);
+					else if(orderState.equalsIgnoreCase("finished"))
+						order.setOrderState(Order.State.finished);
+					else if(orderState.equalsIgnoreCase("reject"))
+						order.setOrderState(Order.State.reject);
+
+					orderList.add(order);
 				}
 			} catch (JSONException je) {
 				je.printStackTrace();
