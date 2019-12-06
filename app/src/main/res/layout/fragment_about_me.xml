@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".AboutMeFragment">
+
+	<android.support.v7.widget.Toolbar
+		android:id="@+id/home_toolbar"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@color/darkYellow"
+		android:orientation="vertical">
+		<GridLayout
+		android:id="@+id/aboutMeAccountGridLayout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_margin="10dp"
+		android:columnCount="2"
+		android:orientation="vertical"
+		android:rowCount="2"
+		tools:context=".AboutMeFragment">
+
+		<ImageView
+			android:id="@+id/accountImageView"
+			android:layout_width="60dp"
+			android:layout_height="60dp"
+			android:layout_row="0"
+			android:layout_column="0"
+			android:layout_marginTop="10dp"
+			android:layout_marginBottom="10dp"
+			android:src="@android:drawable/ic_menu_help" />
+
+		<TextView
+			android:id="@+id/accountTextView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_row="1"
+			android:layout_column="0"
+			android:text="@string/have_not_login"
+			android:textSize="18sp" />
+
+		<ImageView
+			android:id="@+id/imageView2"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_rowSpan="2"
+			android:layout_column="1"
+			android:layout_gravity="end|center"
+			android:src="@android:drawable/ic_media_next" />
+
+	</GridLayout>
+	</android.support.v7.widget.Toolbar>
+
+
+
+</LinearLayout>

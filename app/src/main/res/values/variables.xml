@@ -2,5 +2,4 @@
 <resources>
     <integer name="phone_number_length">11</integer>
     <integer name="verification_length">6</integer>
-    <string name="server_ip" translatable="false">http://10.42.0.1:12345</string>
 </resources>

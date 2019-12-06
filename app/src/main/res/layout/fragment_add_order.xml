@@ -1,43 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:layout_marginTop="10dp"
-	android:layout_marginBottom="10dp"
-	android:layout_marginStart="10dp"
-	android:layout_marginEnd="10dp"
-	tools:context=".UI.AddOrderFragment">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SubmitOrderFragment">
 
+	<include layout="@layout/include_app_bar"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content" />
 
 	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
+		android:layout_margin="5dp"
 		android:orientation="vertical">
 
 		<TableLayout
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content" >
-
-			<TableRow
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:layout_marginBottom="10dp">
-
-				<TextView
-					android:id="@+id/textView2"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_marginEnd="10dp"
-					android:text="@string/order_merchant_choose"
-					android:textSize="18sp" />
-
-				<Spinner
-					android:id="@+id/merchantListSpinner"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_weight="1" />
-			</TableRow>
+			android:layout_height="wrap_content">
 
 			<TableRow
 				android:layout_width="match_parent"
@@ -71,18 +52,18 @@
 		<TableLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_marginTop="10dp" >
+			android:layout_marginTop="10dp">
 
 			<TableRow
 				android:layout_width="match_parent"
-				android:layout_height="match_parent" >
+				android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:background="@android:color/darker_gray"
-                    android:src="@drawable/ic_action_add" />
+				<ImageView
+					android:id="@+id/imageView"
+					android:layout_width="80dp"
+					android:layout_height="80dp"
+					android:background="@android:color/darker_gray"
+					android:src="@drawable/ic_action_add" />
 			</TableRow>
 
 		</TableLayout>
@@ -125,4 +106,4 @@
 			android:text="@string/submit_order" />
 	</LinearLayout>
 
-</FrameLayout>
+</LinearLayout>

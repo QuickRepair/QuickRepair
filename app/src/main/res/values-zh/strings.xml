@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">QuickRepair</string>
-    <string name="login_title">一键登陆</string>
+    <string name="title_login">一键登陆</string>
     <string name="login_button">登陆</string>
     <string name="login_type_switch_customer">顾客账号</string>
     <string name="login_type_switch_merchant">商家账号</string>
@@ -69,4 +69,12 @@
 	<string name="password_string">密码</string>
 	<string name="account_type_string">账号类型</string>
     <string name="new_order_coming">收到新订单</string>
+    <string name="title_order_list">订单</string>
+    <string name="nearby_mechants">附近商家</string>
+    <string name="city_name">城市</string>
+	<string name="search_bar">搜索</string>
+    <string name="merchant_list_name">商家列表</string>
+    <string name="title_account_detail">帐号详情</string>
+    <string name="title_merchant_detail">商家</string>
+    <string name="title_order_detail">订单详情</string>
 </resources>

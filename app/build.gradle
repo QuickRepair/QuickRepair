@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.har.quickrepairforandroid"
+        applicationId "com.quickrepair.merchant"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
@@ -32,4 +32,8 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:28.0.0'
     implementation 'org.jetbrains:annotations-java5:15.0'
     implementation 'org.jetbrains:annotations-java5:15.0'
+    implementation 'com.android.support:gridlayout-v7:28.0.0'
+    implementation 'android.arch.persistence.room:common:1.1.1'
+    implementation 'android.arch.persistence.room:runtime:1.1.1'
+    annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
 }

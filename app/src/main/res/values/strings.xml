@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">QuickRepair</string>
-    <string name="login_title">Login Now</string>
+    <string name="title_login">Login Now</string>
     <string name="login_button">Login</string>
     <string name="login_type_switch_customer">Customer account</string>
     <string name="login_type_switch_merchant">Merchant account</string>
@@ -72,6 +72,17 @@
     <string name="password_string">Password</string>
     <string name="account_type_string">Account type</string>
     <string name="new_order_coming">There is a new order</string>
+    <string name="title_order_list">Orders</string>
+    <string name="nearby_mechants">Nearby Merchants</string>
+    <string name="city_name">City</string>
+    <string name="search_bar">Search</string>
+    <string name="id_string" translatable="false">ID</string>
+    <string name="merchant_list_name">Merchant List</string>
+    <string name="title_account_detail">Account Detail</string>
+    <string name="title_merchant_detail">Merchant</string>
+    <string name="title_order_detail">Order Detail</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
 
     <!-- TODO: Remove or change this placeholder text -->
 
